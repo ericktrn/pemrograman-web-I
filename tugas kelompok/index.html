@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebMaster Academy - Belajar Membuat Website Profesional</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Reset dan Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary: #133bec;
+        --primary-dark: #190384;
+        --secondary: #4cc9f0;
+        --accent: #7209b7;
+        --dark: #212529;
+        --light: #f8f9fa;
+        --gray: #6c757d;
+        --light-gray: #e9ecef;
+        --success: #06d6a0;
+        --danger: #ef476f;
+        --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        --radius: 10px;
+        --transition: all 0.3s ease;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        color: var(--dark);
+        line-height: 1.6;
+        overflow-x: hidden;
+        min-height: 100vh;
+        position: relative;
+        background-color: var(--light);
+      }
+
+      /* Background dengan Gambar Universitas */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("unpamviktor.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0.08;
+        z-index: -1;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--primary);
+        color: white;
+        padding: 14px 28px;
+        border-radius: var(--radius);
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+        text-align: center;
+      }
+
+      .btn:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow);
+      }
+
+      .btn-secondary {
+        background-color: var(--secondary);
+      }
+
+      .btn-secondary:hover {
+        background-color: #3ab5d8;
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        border: 2px solid var(--primary);
+        color: var(--primary);
+      }
+
+      .btn-outline:hover {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      /* Header & Navigation */
+      header {
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 0;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--primary);
+      }
+
+      .logo i {
+        margin-right: 10px;
+        font-size: 32px;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 30px;
+      }
+
+      .nav-links a {
+        font-weight: 500;
+        position: relative;
+      }
+
+      .nav-links a:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: -5px;
+        left: 0;
+        background-color: var(--primary);
+        transition: var(--transition);
+      }
+
+      .nav-links a:hover:after {
+        width: 100%;
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: var(--dark);
+        cursor: pointer;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(
+            rgba(67, 97, 238, 0.9),
+            rgba(58, 86, 212, 0.9)
+          ),
+          url("unpamviktor.jpg");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        overflow: hidden;
+      }
+
+      .hero-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 40px;
+      }
+
+      .hero-text {
+        flex: 1;
+        padding-right: 40px;
+      }
+
+      .hero-image {
+        flex: 1;
+        text-align: center;
+        position: relative;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        color: white;
+      }
+
+      .hero h1 span {
+        color: #ffd166;
+      }
+
+      .hero p {
+        font-size: 18px;
+        margin-bottom: 30px;
+        max-width: 500px;
+        opacity: 0.9;
+      }
+
+      .hero-btns {
+        display: flex;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .code-preview {
+        background-color: rgba(33, 37, 41, 0.9);
+        border-radius: var(--radius);
+        padding: 25px;
+        box-shadow: var(--shadow);
+        max-width: 500px;
+        margin: 0 auto;
+        text-align: left;
+        backdrop-filter: blur(5px);
+      }
+
+      .code-preview-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        color: var(--light-gray);
+      }
+
+      .code-preview-content {
+        color: #f8f9fa;
+        font-family: "Courier New", monospace;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .code-tag {
+        color: #4cc9f0;
+      }
+
+      .code-attr {
+        color: #ffd166;
+      }
+
+      .code-value {
+        color: #06d6a0;
+      }
+
+      /* Features Section */
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .section-title h2 {
+        font-size: 36px;
+        margin-bottom: 15px;
+        color: var(--dark);
+      }
+
+      .section-title p {
+        color: var(--gray);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      .feature-card {
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: var(--radius);
+        padding: 35px 25px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: var(--transition);
+        text-align: center;
+        border-top: 4px solid var(--primary);
+        backdrop-filter: blur(5px);
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow);
+      }
+
+      .feature-icon {
+        width: 70px;
+        height: 70px;
+        background-color: rgba(67, 97, 238, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        color: var(--primary);
+        font-size: 30px;
+      }
+
+      .feature-card h3 {
+        font-size: 22px;
+        margin-bottom: 15px;
+        color: var(--dark);
+      }
+
+      .feature-card p {
+        color: var(--gray);
+      }
+
+      /* Tim Pengembang Section */
+      .team-section {
+        background-color: rgba(248, 249, 250, 0.95);
+        position: relative;
+      }
+
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .team-card {
+        background-color: white;
+        border-radius: var(--radius);
+        padding: 30px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+        transition: var(--transition);
+        text-align: center;
+        border-top: 4px solid var(--primary);
+      }
+
+      .team-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow);
+      }
+
+      .team-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        overflow: hidden; /* potong gambar supaya bulat */
+        margin: 0 auto 20px;
+        border: 4px solid white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .team-avatar .avatar-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* menjaga proporsi gambar */
+        display: block;
+      }
+
+      .team-info h3 {
+        font-size: 22px;
+        margin-bottom: 10px;
+        color: var(--dark);
+      }
+
+      .nim {
+        display: inline-block;
+        background-color: var(--primary);
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+
+      .team-contact {
+        background-color: rgba(67, 97, 238, 0.05);
+        padding: 15px;
+        border-radius: var(--radius);
+        margin-top: 15px;
+        text-align: left;
+        border-left: 3px solid var(--secondary);
+      }
+
+      .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: var(--gray);
+      }
+
+      .contact-item i {
+        margin-right: 10px;
+        color: var(--primary);
+        width: 20px;
+      }
+
+      /* Learning Path */
+      .learning-path {
+        background-color: rgba(248, 249, 250, 0.9);
+        position: relative;
+      }
+
+      .path-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .step {
+        display: flex;
+        align-items: flex-start;
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: var(--radius);
+        padding: 25px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        position: relative;
+        transition: var(--transition);
+        backdrop-filter: blur(5px);
+      }
+
+      .step:hover {
+        transform: translateX(10px);
+      }
+
+      .step-number {
+        background-color: var(--primary);
+        color: white;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 700;
+        margin-right: 25px;
+        flex-shrink: 0;
+      }
+
+      .step-content h3 {
+        font-size: 22px;
+        margin-bottom: 10px;
+        color: var(--dark);
+      }
+
+      .step-content p {
+        color: var(--gray);
+        margin-bottom: 15px;
+      }
+
+      .step-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .tag {
+        background-color: var(--light-gray);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      /* Courses Section */
+      .courses-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .course-card {
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: var(--transition);
+        backdrop-filter: blur(5px);
+      }
+
+      .course-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow);
+      }
+
+      .course-header {
+        height: 180px;
+        background-color: var(--primary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 40px;
+        position: relative;
+      }
+
+      .course-level {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background-color: white;
+        color: var(--primary);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .course-content {
+        padding: 25px;
+      }
+
+      .course-content h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: var(--dark);
+      }
+
+      .course-content p {
+        color: var(--gray);
+        margin-bottom: 20px;
+        font-size: 15px;
+      }
+
+      .course-meta {
+        display: flex;
+        justify-content: space-between;
+        color: var(--gray);
+        font-size: 14px;
+        margin-bottom: 20px;
+      }
+
+      /* Testimonials */
+      .testimonials {
+        background: linear-gradient(
+            rgba(33, 37, 41, 0.95),
+            rgba(58, 86, 212, 0.9)
+          ),
+          url("unpamviktor.jpg");
+        background-size: cover;
+        background-position: center;
+        color: white;
+      }
+
+      .testimonials .section-title h2 {
+        color: white;
+      }
+
+      .testimonials .section-title p {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .testimonial-card {
+        background-color: rgba(255, 255, 255, 0.15);
+        border-radius: var(--radius);
+        padding: 30px;
+        transition: var(--transition);
+        backdrop-filter: blur(10px);
+      }
+
+      .testimonial-card:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        margin-bottom: 20px;
+        color: rgba(255, 255, 255, 0.95);
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+      }
+
+      .author-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--secondary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        margin-right: 15px;
+      }
+
+      .author-info h4 {
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+
+      .author-info p {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 14px;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        text-align: center;
+        background: linear-gradient(
+            135deg,
+            rgba(67, 97, 238, 0.9) 0%,
+            rgba(114, 9, 183, 0.9) 100%
+          ),
+          url("https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 100px 0;
+      }
+
+      .cta-section h2 {
+        font-size: 36px;
+        margin-bottom: 20px;
+      }
+
+      .cta-section p {
+        max-width: 600px;
+        margin: 0 auto 30px;
+        font-size: 18px;
+        opacity: 0.95;
+      }
+
+      /* Footer */
+      footer {
+        background-color: rgba(33, 37, 41, 0.95);
+        color: white;
+        padding: 70px 0 30px;
+        backdrop-filter: blur(10px);
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-bottom: 40px;
+      }
+
+      .footer-column h3 {
+        font-size: 20px;
+        margin-bottom: 25px;
+        color: white;
+      }
+
+      .footer-column ul {
+        list-style: none;
+      }
+
+      .footer-column ul li {
+        margin-bottom: 15px;
+      }
+
+      .footer-column ul li a {
+        color: rgba(255, 255, 255, 0.7);
+        transition: var(--transition);
+      }
+
+      .footer-column ul li a:hover {
+        color: white;
+        padding-left: 5px;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        color: white;
+        transition: var(--transition);
+      }
+
+      .social-icons a:hover {
+        background-color: var(--primary);
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 14px;
+      }
+
+      /* University Badge */
+      .university-badge {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: rgba(255, 255, 255, 0.95);
+        border-radius: var(--radius);
+        padding: 15px;
+        box-shadow: var(--shadow);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 100;
+        backdrop-filter: blur(5px);
+        max-width: 250px;
+      }
+
+      .university-logo {
+        width: 50px;
+        height: 50px;
+        background-color: var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .university-text h4 {
+        font-size: 16px;
+        margin-bottom: 5px;
+        color: var(--dark);
+      }
+
+      .university-text p {
+        font-size: 12px;
+        color: var(--gray);
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .hero-content {
+          flex-direction: column;
+        }
+
+        .hero-text {
+          padding-right: 0;
+          margin-bottom: 50px;
+          text-align: center;
+        }
+
+        .hero h1 {
+          font-size: 40px;
+        }
+
+        .hero-btns {
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .mobile-menu-btn {
+          display: block;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 80px;
+          left: 0;
+          width: 100%;
+          background-color: rgba(255, 255, 255, 0.98);
+          flex-direction: column;
+          align-items: center;
+          padding: 20px 0;
+          box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+          transform: translateY(-100%);
+          opacity: 0;
+          transition: var(--transition);
+          z-index: 99;
+          backdrop-filter: blur(10px);
+        }
+
+        .nav-links.active {
+          transform: translateY(0);
+          opacity: 1;
+        }
+
+        .nav-links li {
+          margin: 15px 0;
+        }
+
+        .hero h1 {
+          font-size: 32px;
+        }
+
+        .section-title h2 {
+          font-size: 28px;
+        }
+
+        .step {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .step-number {
+          margin-right: 0;
+          margin-bottom: 20px;
+        }
+
+        .team-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .university-badge {
+          position: static;
+          max-width: 100%;
+          margin-top: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- University Badge -->
+    <div class="university-badge">
+      <div class="university-logo">
+        <img
+          src="https://unpam.ac.id/_nuxt/logo-unpam-300x291.DBvGUDu1.png"
+          alt="Logo UNPAM"
+          width="50"
+        />
+      </div>
+      <div class="university-text">
+        <h4>Universitas Pamulang</h4>
+        <p>Kampus Viktor - Pusat Teknologi & Informatika</p>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <a href="#" class="logo">
+            <i class="fas fa-code"></i>
+            <span>WebMaster Academy</span>
+          </a>
+          <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+          </button>
+          <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#team">Tim Kami</a></li>
+            <li><a href="#features">Fitur</a></li>
+            <li><a href="#learning-path">Alur Belajar</a></li>
+            <li><a href="#courses">Kursus</a></li>
+            <li><a href="#testimonials">Testimoni</a></li>
+            <li><a href="#contact" class="btn">Mulai Belajar</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Belajar Membuat <span>Website Profesional</span> dari Nol</h1>
+            <p>
+              Kuasai HTML, CSS, JavaScript dan teknologi web modern lainnya
+              dengan kurikulum terstruktur dan mentor berpengalaman. Mulai karir
+              Anda sebagai web developer sekarang!
+            </p>
+            <div class="hero-btns">
+              <a href="#courses" class="btn">Lihat Kursus</a>
+              <a href="#learning-path" class="btn">Alur Belajar</a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <div class="code-preview">
+              <div class="code-preview-header">
+                <span>index.html</span>
+                <div>
+                  <i
+                    class="fas fa-circle"
+                    style="color: #ef476f; margin-right: 5px"
+                  ></i>
+                  <i
+                    class="fas fa-circle"
+                    style="color: #ffd166; margin-right: 5px"
+                  ></i>
+                  <i class="fas fa-circle" style="color: #06d6a0"></i>
+                </div>
+              </div>
+              <div class="code-preview-content">
+                <span class="code-tag">&lt;!DOCTYPE html&gt;</span><br />
+                <span class="code-tag">&lt;html&gt;</span><br />
+                <span class="code-tag">&lt;head&gt;</span><br />
+                &nbsp;&nbsp;<span class="code-tag">&lt;title&gt;</span>Website
+                Pertamaku<span class="code-tag">&lt;/title&gt;</span><br />
+                &nbsp;&nbsp;<span class="code-tag">&lt;link</span>
+                <span class="code-attr">rel=</span
+                ><span class="code-value">"stylesheet"</span>
+                <span class="code-attr">href=</span
+                ><span class="code-value">"style.css"</span
+                ><span class="code-tag">&gt;</span><br />
+                <span class="code-tag">&lt;/head&gt;</span><br />
+                <span class="code-tag">&lt;body&gt;</span><br />
+                &nbsp;&nbsp;<span class="code-tag">&lt;h1&gt;</span>Selamat
+                Datang!<span class="code-tag">&lt;/h1&gt;</span><br />
+                &nbsp;&nbsp;<span class="code-tag">&lt;p&gt;</span>Ini adalah
+                website pertama saya.<span class="code-tag">&lt;/p&gt;</span
+                ><br />
+                <span class="code-tag">&lt;/body&gt;</span><br />
+                <span class="code-tag">&lt;/html&gt;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section" id="team">
+      <div class="container">
+        <div class="section-title">
+          <h2>Tim Pengembang Website</h2>
+          <p>
+            Mahasiswa Universitas Pamulang Kampus Viktor - Program Studi Teknik
+            Informatika
+          </p>
+        </div>
+
+        <div class="team-grid">
+          <!-- Anggota 1 -->
+          <div class="team-card">
+            <div class="team-avatar">
+              <img src="ericktrn.jpg" alt="Erick Profile" class="avatar-img" />
+            </div>
+            <div class="team-info">
+              <h3>Erick Tarantino</h3>
+              <span class="nim">NIM: 231011403335</span>
+              <p><strong>Frontend Developer & UI/UX Designer</strong></p>
+              <p>
+                Spesialis dalam pengembangan antarmuka pengguna yang responsif
+                dan pengalaman pengguna yang optimal.
+              </p>
+              <div class="team-contact">
+                <div class="contact-item">
+                  <i class="fas fa-envelope"></i>
+                  <span>erick.tarantino@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                  <i class="fas fa-phone"></i>
+                  <span>+62 xxx xxx xxx</span>
+                </div>
+                <div class="contact-item">
+                  <i class="fab fa-github"></i>
+                  <span>github.com/ericktrn</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Anggota 2 -->
+          <div class="team-card">
+            <div class="team-avatar">AP</div>
+            <div class="team-info">
+              <h3>Agung Prayoga</h3>
+              <span class="nim">NIM: 231011400246</span>
+              <p><strong>Backend Developer & Database Specialist</strong></p>
+              <p>
+                Spesialis dalam pengembangan server-side, API, dan manajemen
+                database untuk aplikasi web skala besar.
+              </p>
+              <div class="team-contact">
+                <div class="contact-item">
+                  <i class="fas fa-envelope"></i>
+                  <span>agung.prayoga@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                  <i class="fas fa-phone"></i>
+                  <span>+62 xxx-xxx-xxx</span>
+                </div>
+                <div class="contact-item">
+                  <i class="fab fa-github"></i>
+                  <span>github.com/agungprayoga</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Anggota 3 -->
+          <div class="team-card">
+            <div class="team-avatar">FF</div>
+            <div class="team-info">
+              <h3>Firda Muflif Fauzi</h3>
+              <span class="nim">NIM: 231011402305</span>
+              <p><strong>Fullstack Developer & Project Manager</strong></p>
+              <p>
+                Spesialis dalam pengembangan aplikasi web lengkap dari frontend
+                hingga backend, serta manajemen proyek.
+              </p>
+              <div class="team-contact">
+                <div class="contact-item">
+                  <i class="fas fa-envelope"></i>
+                  <span>firda.fauzi@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                  <i class="fas fa-phone"></i>
+                  <span>+62 xxx xxx xxx</span>
+                </div>
+                <div class="contact-item">
+                  <i class="fab fa-github"></i>
+                  <span>github.com/firdamuflif</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <div class="container">
+        <div class="section-title">
+          <h2>Kenapa Belajar di WebMaster Academy?</h2>
+          <p>
+            Kami menyediakan platform pembelajaran terbaik untuk menjadi web
+            developer profesional
+          </p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h3>Pembelajaran Praktis</h3>
+            <p>
+              Belajar dengan proyek nyata dan studi kasus yang relevan dengan
+              industri saat ini.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <h3>Mentor Berpengalaman</h3>
+            <p>
+              Didampingi oleh mentor yang bekerja di perusahaan teknologi
+              ternama.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-certificate"></i>
+            </div>
+            <h3>Sertifikat Resmi</h3>
+            <p>
+              Dapatkan sertifikat yang diakui industri setelah menyelesaikan
+              kursus.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <h3>Bimbingan Karir</h3>
+            <p>
+              Dapatkan panduan untuk membangun portofolio dan melamar pekerjaan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Learning Path Section -->
+    <section class="learning-path" id="learning-path">
+      <div class="container">
+        <div class="section-title">
+          <h2>Alur Belajar Web Development</h2>
+          <p>
+            Ikuti jalan yang jelas dari pemula hingga menjadi web developer
+            profesional
+          </p>
+        </div>
+        <div class="path-steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Dasar-dasar Web</h3>
+              <p>
+                Pelajari HTML, CSS dasar dan konsep penting pembuatan website.
+              </p>
+              <div class="step-tags">
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">Responsive Design</span>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>JavaScript & Interaktivitas</h3>
+              <p>
+                Tambahkan logika dan interaktivitas dengan JavaScript modern.
+              </p>
+              <div class="step-tags">
+                <span class="tag">JavaScript ES6+</span>
+                <span class="tag">DOM Manipulation</span>
+                <span class="tag">API Fetch</span>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Framework Modern</h3>
+              <p>
+                Gunakan framework seperti React, Vue atau Angular untuk
+                pengembangan yang lebih efisien.
+              </p>
+              <div class="step-tags">
+                <span class="tag">React</span>
+                <span class="tag">Vue.js</span>
+                <span class="tag">State Management</span>
+              </div>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3>Backend & Database</h3>
+              <p>
+                Pelajari Node.js, Express, dan database untuk membangun aplikasi
+                full-stack.
+              </p>
+              <div class="step-tags">
+                <span class="tag">Node.js</span>
+                <span class="tag">Express</span>
+                <span class="tag">MongoDB</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="courses">
+      <div class="container">
+        <div class="section-title">
+          <h2>Kursus Populer</h2>
+          <p>Pilih kursus sesuai dengan level dan minat Anda</p>
+        </div>
+        <div class="courses-grid">
+          <div class="course-card">
+            <div class="course-header">
+              <i class="fab fa-html5"></i>
+              <span class="course-level">Pemula</span>
+            </div>
+            <div class="course-content">
+              <h3>HTML & CSS Dasar</h3>
+              <p>
+                Pelajari dasar-dasar pembuatan website dengan HTML dan CSS.
+                Membuat layout responsif dan modern.
+              </p>
+              <div class="course-meta">
+                <span><i class="far fa-clock"></i> 30 Jam</span>
+                <span><i class="fas fa-video"></i> 45 Video</span>
+                <span><i class="fas fa-tasks"></i> 8 Proyek</span>
+              </div>
+              <a href="#" class="btn">Mulai Kursus</a>
+            </div>
+          </div>
+          <div class="course-card">
+            <div class="course-header">
+              <i class="fab fa-js-square"></i>
+              <span class="course-level">Menengah</span>
+            </div>
+            <div class="course-content">
+              <h3>JavaScript Modern</h3>
+              <p>
+                Kuasi JavaScript ES6+, DOM manipulation, async programming dan
+                konsep penting lainnya.
+              </p>
+              <div class="course-meta">
+                <span><i class="far fa-clock"></i> 40 Jam</span>
+                <span><i class="fas fa-video"></i> 60 Video</span>
+                <span><i class="fas fa-tasks"></i> 12 Proyek</span>
+              </div>
+              <a href="#" class="btn">Mulai Kursus</a>
+            </div>
+          </div>
+          <div class="course-card">
+            <div class="course-header">
+              <i class="fab fa-react"></i>
+              <span class="course-level">Lanjutan</span>
+            </div>
+            <div class="course-content">
+              <h3>React & Redux</h3>
+              <p>
+                Bangun aplikasi web modern dengan React, Redux, React Router dan
+                ekosistem React lainnya.
+              </p>
+              <div class="course-meta">
+                <span><i class="far fa-clock"></i> 50 Jam</span>
+                <span><i class="fas fa-video"></i> 70 Video</span>
+                <span><i class="fas fa-tasks"></i> 15 Proyek</span>
+              </div>
+              <a href="#" class="btn">Mulai Kursus</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+      <div class="container">
+        <div class="section-title">
+          <h2>Apa Kata Alumni Kami</h2>
+          <p>
+            Ribuan siswa telah berhasil menjadi web developer setelah belajar di
+            WebMaster Academy
+          </p>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              "Kursus di WebMaster Academy sangat terstruktur dan mudah
+              dipahami. Dari nol sampai bisa membuat website profesional!"
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">AR</div>
+              <div class="author-info">
+                <h4>Andi Rahman</h4>
+                <p>Frontend Developer di Tokopedia</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              "Mentor sangat membantu dan responsif. Proyek-proyek yang
+              diberikan relevan dengan kebutuhan industri."
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">SD</div>
+              <div class="author-info">
+                <h4>Luthfiah Paramitha</h4>
+                <p>Fullstack Developer di Startup Fintech</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-text">
+              "Sertifikat dari WebMaster Academy membantu saya mendapatkan
+              pekerjaan pertama sebagai web developer."
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">RF</div>
+              <div class="author-info">
+                <h4>Rizki Fauzi</h4>
+                <p>Web Developer Freelancer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+      <div class="container">
+        <h2>Siap Memulai Perjalanan Web Development Anda?</h2>
+        <p>
+          Bergabunglah dengan lebih dari 10.000 siswa yang telah berhasil
+          menguasai pembuatan website dan memulai karir di industri teknologi.
+        </p>
+        <a href="#" class="btn btn-secondary"
+          >Daftar Sekarang - Gratis Trial 7 Hari!</a
+        >
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>WebMaster Academy</h3>
+            <p>
+              Platform edukasi web development terdepan di Indonesia. Kami
+              berkomitmen menghasilkan web developer profesional yang siap
+              bekerja.
+            </p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3>Tim Pengembang</h3>
+            <ul>
+              <li><a href="#team">Erick Tarantino - 231011403335</a></li>
+              <li><a href="#team">Agung Prayoga - 231011400246</a></li>
+              <li><a href="#team">Firda Muflif Fauzi - 231011402305</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Kontak</h3>
+            <ul>
+              <li><i class="fas fa-envelope"></i> ericktarantino@gmail.com</li>
+              <li><i class="fas fa-phone"></i> +62 xxx xxx xxx</li>
+              <li>
+                <i class="fas fa-map-marker-alt"></i> Kampus Viktor, Sasmita
+                Jaya
+              </li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Universitas</h3>
+            <ul>
+              <li><a href="#">Universitas Pamulang</a></li>
+              <li><a href="#">Kampus Viktor</a></li>
+              <li><a href="#">Program Studi Teknik Informatika</a></li>
+              <li><a href="#">Fakultas Teknik & Informatika</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>
+            &copy; 2025 WebMaster Academy - Universitas Pamulang. Tugas Kelompok
+            - Semua hak dilindungi.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+      const navLinks = document.getElementById("navLinks");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        mobileMenuBtn.innerHTML = navLinks.classList.contains("active")
+          ? '<i class="fas fa-times"></i>'
+          : '<i class="fas fa-bars"></i>';
+      });
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+          mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        });
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 100,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Registration Modal
+      document.querySelectorAll(".btn, .btn-secondary").forEach((button) => {
+        button.addEventListener("click", function (e) {
+          if (
+            this.textContent.includes("Daftar") ||
+            this.textContent.includes("Mulai")
+          ) {
+            e.preventDefault();
+
+            // Create modal
+            const modal = document.createElement("div");
+            modal.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: rgba(0, 0, 0, 0.8);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        z-index: 2000;
+                    `;
+
+            modal.innerHTML = `
+                        <div style="background: white; padding: 40px; border-radius: 15px; max-width: 500px; width: 90%;">
+                            <div style="text-align: center; margin-bottom: 30px;">
+                                <h2 style="color: #4361ee; margin-bottom: 10px;">🎓 Daftar WebMaster Academy</h2>
+                                <p style="color: #666;">Universitas Pamulang Kampus Viktor</p>
+                            </div>
+                            
+                            <form id="registrationForm">
+                                <input type="text" placeholder="Nama Lengkap" required 
+                                       style="width: 100%; padding: 12px; margin-bottom: 15px; border: 2px solid #e9ecef; border-radius: 8px; font-size: 16px;">
+                                
+                                <input type="email" placeholder="Email" required 
+                                       style="width: 100%; padding: 12px; margin-bottom: 15px; border: 2px solid #e9ecef; border-radius: 8px; font-size: 16px;">
+                                
+                                <input type="tel" placeholder="Nomor Telepon" required 
+                                       style="width: 100%; padding: 12px; margin-bottom: 20px; border: 2px solid #e9ecef; border-radius: 8px; font-size: 16px;">
+                                
+                                <button type="submit" style="background: #4361ee; color: white; border: none; padding: 15px; width: 100%; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer;">
+                                    Daftar Sekarang
+                                </button>
+                            </form>
+                            
+                            <button id="closeModal" style="background: none; border: none; color: #666; margin-top: 20px; cursor: pointer; font-size: 14px;">
+                                <i class="fas fa-times"></i> Tutup
+                            </button>
+                        </div>
+                    `;
+
+            document.body.appendChild(modal);
+
+            // Close modal
+            document
+              .getElementById("closeModal")
+              .addEventListener("click", () => {
+                document.body.removeChild(modal);
+              });
+
+            // Form submission
+            document
+              .getElementById("registrationForm")
+              .addEventListener("submit", function (e) {
+                e.preventDefault();
+                alert(
+                  "🎉 Pendaftaran berhasil!\n\nSelamat bergabung di WebMaster Academy - Universitas Pamulang Kampus Viktor!\n\nKami akan mengirimkan email konfirmasi dan akses pembelajaran dalam waktu 24 jam."
+                );
+                document.body.removeChild(modal);
+              });
+          }
+        });
+      });
+
+      // Animation for team cards on scroll
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      // Observe team cards
+      document.querySelectorAll(".team-card").forEach((card, index) => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(30px)";
+        card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        card.style.transitionDelay = `${index * 0.2}s`;
+
+        observer.observe(card);
+      });
+    </script>
+  </body>
+</html>
